@@ -1,18 +1,8 @@
-import { useState, useRef, useEffect } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
 
 function App() {
-  const [modal, setModal] = useState("none");
-  const username = useRef<HTMLInputElement>(null);
-  const password = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
-
-  const handleLoginSuccess = () => {
-    localStorage.setItem('isLoggedIn', 'true');
-    navigate("/search");
-  };
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -49,13 +39,13 @@ function App() {
               </div>
               <div className="flex space-x-4">
                 <button
-                  onClick={() => setModal("login")}
+                  onClick={() => navigate('/login')}
                   className="px-6 py-2 text-white bg-indigo-500 rounded-lg hover:bg-indigo-400 transform hover:scale-105 transition duration-300 ease-in-out"
                 >
                   Login
                 </button>
                 <button
-                  onClick={() => setModal("register")}
+                  onClick={() => navigate('/register')}
                   className="px-6 py-2 text-indigo-500 bg-white border-2 border-indigo-500 rounded-lg hover:bg-indigo-50 transform hover:scale-105 transition duration-300 ease-in-out"
                 >
                   Register
@@ -89,22 +79,6 @@ function App() {
           </div>
         </div>
       </div>
-
-      {modal === "login" && (
-        <Login
-          onClose={() => setModal("none")}
-          onLoginSuccess={handleLoginSuccess}
-          usernameRef={username}
-          passwordRef={password}
-        />
-      )}
-      {modal === "register" && (
-        <Register
-          onClose={() => setModal("none")}
-          usernameRef={username}
-          passwordRef={password}
-        />
-      )}
     </div>
   );
 }

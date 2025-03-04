@@ -1,0 +1,14 @@
+Changes :
+
+1. Protected and Public Routes (Done)
+2. No Props in the components that are going as route (Done)
+3. Favourite Books (Done)
+4. Categories like genre, averageRating or pub year (Done)
+5. Filters, like genre, averageRating or pub year (Done)
+6. books collections, like finished, currently reading, (search -> currently reading => finished)
+
+1. json file for registered users 
+2. no error page ,directly log out (Done)
+3. store token based on password or username
+4. take handleClick inside Search component
+5. when favourite clicked -> set to favourite, set to localStorage, in profile favourite -> get the localstorage and do the required

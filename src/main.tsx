@@ -1,28 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Search from './pages/Search';
-import NotFound from './pages/NotFound';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import { publicRoutes } from "./routes/publicRoutes";
+import { protectedRoutes } from "./routes/protectedRoutes";
+import "./index.css";
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-  },
-  {
-    path: '/search',
-    element: <Search />,
-  },
-  {
-    path: '*',
-    element: <NotFound />,
-  },
-]);
+const routes = [...publicRoutes, ...protectedRoutes];
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+const router = createBrowserRouter(routes);
+
+ReactDOM.createRoot(document.getElementById("root")!).render(
+  <>
     <RouterProvider router={router} />
-  </React.StrictMode>
+    <Toaster position="top-center" />
+  </>
 );
